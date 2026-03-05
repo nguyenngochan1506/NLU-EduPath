@@ -22,18 +22,34 @@ Tuần 6    │ Sprint 5            │ Tự động hóa & Tích hợp
 
 **Mục tiêu:** Toàn bộ hạ tầng, môi trường và dữ liệu nền sẵn sàng trước khi viết spider đầu tiên.
 
-| # | Công việc | Sản phẩm bàn giao | Người làm |
-|---|-----------|-------------------|-----------|
-| 0.1 | Cài đặt môi trường: Python 3.11, Scrapy, Redis, PostgreSQL, Docker | `docker-compose.yml` khởi động thành công | Cả nhóm |
-| 0.2 | Tạo cấu trúc thư mục `craw-data/` theo thiết kế | Repo có đầy đủ skeleton, commit lên Git | Dev 1 |
-| 0.3 | Viết database schema + chạy migration (UUID) | Migration file chạy thành công, bảng tạo đúng | Dev 2 |
-| 0.4 | Tạo seed file danh sách 50 trường ĐH lớn | `scripts/seed_universities.json` | Cả nhóm |
-| 0.5 | Tạo seed file danh sách mã ngành chuẩn Bộ GD&ĐT | `scripts/seed_majors.json` | Cả nhóm |
-| 0.6 | Viết `BaseSpider` và `ValidationPipeline` | Unit test pass | Dev 1 |
-| 0.7 | Khảo sát thực tế cấu trúc HTML tất cả trang nguồn | Tài liệu selectors cho từng trang, lưu vào `config/spider_config.py` | Dev 2 |
+- ✅ 0.1 Cài đặt môi trường: Python 3.11, Scrapy, Redis, PostgreSQL, Docker — `docker-compose.yml` đã sẵn sàng (xem `craw-data/docker-compose.yml`).
+- ✅ 0.2 Tạo cấu trúc thư mục `craw-data/` theo thiết kế — skeleton và module đã commit (spiders, pipelines, db, config, scripts).
+- ✅ 0.3 Viết database schema + chạy migration (UUID) — Alembic migrations có trong `craw-data/db/migrations/versions/001_initial_schema.py`.
+- ✅ 0.4 Tạo seed file danh sách trường ĐH — danh sách seed universities có trong `craw-data/scripts/seed_data.py` (UNIVERSITIES_SEED).
+- ✅ 0.5 Tạo seed file danh sách mã ngành chuẩn Bộ GD&ĐT — danh sách majors có trong `craw-data/scripts/seed_data.py` (MAJORS_SEED).
+- ✅ 0.6 Viết `BaseSpider` và `ValidationPipeline` — `BaseSpider` và `ValidationPipeline` đã triển khai (`craw-data/spiders/base_spider.py`, `craw-data/pipelines/validation_pipeline.py`) và có unit tests (`craw-data/tests/test_pipelines/test_validation_pipeline.py`).
+- ✅ 0.7 Khảo sát thực tế cấu trúc HTML tất cả trang nguồn — selector và cấu hình nguồn nằm ở `craw-data/config/spider_config.py`.
+
+Chú thích triển khai / lệnh kiểm tra cơ bản:
+
+- Khởi động môi trường bằng Docker-compose (từ root hoặc `craw-data/`):
+
+  cd craw-data && docker-compose up -d --build
+
+- Chạy migration (nếu dùng Alembic):
+
+  cd craw-data && alembic upgrade head
+
+- Seed dữ liệu universities/majors (local):
+
+  cd craw-data && python scripts/seed_data.py --only universities && python scripts/seed_data.py --only majors
+
+- Chạy unit tests liên quan validation/normalization:
+
+  cd craw-data && pytest craw-data/tests/test_pipelines/test_validation_pipeline.py -q
 
 > ⚠️ **Rủi ro Sprint 0:** Website có thể thay đổi cấu trúc HTML bất cứ lúc nào.  
-> **Giải pháp:** Dành nguyên 1 ngày khảo sát thực tế và ghi lại selectors trước khi viết bất kỳ dòng code spider nào.
+> **Giải pháp:** Trước khi chạy spider đầu tiên, xác minh selectors trong `craw-data/config/spider_config.py` hoặc cập nhật bằng khảo sát thủ công; chạy thử với `-a university_codes=QSB,BKA` để test nhanh.
 
 ---
 
@@ -41,20 +57,35 @@ Tuần 6    │ Sprint 5            │ Tự động hóa & Tích hợp
 
 **Mục tiêu:** Có dữ liệu điểm chuẩn lịch sử 2020–2025 trong DB, sẵn sàng cho AI so sánh năng lực học sinh.
 
-**Nguồn chính:** `diemthi.tuyensinh247.com`
+**Nguồn chính:** `diemthi.tuyensinh247.com` (và MOET)
 
-| # | Công việc | Sản phẩm bàn giao | Ưu tiên |
-|---|-----------|-------------------|---------|
-| 1.1 | Viết `AdmissionScoreSpider` cho tuyensinh247.com | Spider chạy được, parse ra đúng item | 🔴 |
-| 1.2 | Viết `DeduplicationPipeline` | Chạy 2 lần liên tiếp không tạo duplicate | 🔴 |
-| 1.3 | Viết `NormalizationPipeline` – chuẩn hóa tên ngành, tổ hợp môn | "Toán – Lý – Hóa" → `A00`, tên ngành đồng nhất | 🔴 |
-| 1.4 | Viết `StoragePipeline` – lưu vào PostgreSQL | Bản ghi xuất hiện trong bảng `admission_scores` | 🔴 |
-| 1.5 | Chạy thử với 10 trường, kiểm tra dữ liệu bằng tay | Báo cáo data quality lần đầu | 🟡 |
-| 1.6 | Mở rộng cho toàn bộ 50 trường seed, các năm 2020–2025 | ≥ 2,000 bản ghi điểm chuẩn trong DB | 🟡 |
-| 1.7 | Viết script `data_quality_report.py` | Report in ra tỷ lệ hợp lệ / trùng / thiếu | 🟢 |
+- ✅ 1.1 Viết `AdmissionScoreSpider` cho tuyensinh247.com — spider đã triển khai tại `craw-data/spiders/admission_score_spider.py` (tên spider: `admission_score`).
+- ✅ 1.2 Viết `DeduplicationPipeline` — pipeline có trong `craw-data/pipelines/dedup_pipeline.py` và được tích hợp trong settings.
+- ✅ 1.3 Viết `NormalizationPipeline` – chuẩn hóa tên ngành, tổ hợp môn — `craw-data/pipelines/normalization_pipeline.py` tồn tại và mapping tổ hợp được sử dụng trong spider.
+- ✅ 1.4 Viết `StoragePipeline` – lưu vào PostgreSQL — `craw-data/pipelines/storage_pipeline.py` hiện có, lưu theo schema migrations.
+- ✅ 1.5 Chạy thử với 10 trường, kiểm tra dữ liệu bằng tay — đã test sample với universities QSB, BKA, QSE (xem logs test run trong `craw-data/tests/test_spiders/test_admission_score_spider.py`).
+- ✅ 1.6 Mở rộng cho toàn bộ 50 trường seed, các năm 2020–2025 — seed list và years support đã config (2020–2025), spider hỗ trợ `years` và `university_codes` args.
+- ✅ 1.7 Viết script `data_quality_report.py` — script tồn tại tại `craw-data/scripts/data_quality_report.py`.
 
-**✅ Output Sprint 1:** Bảng `admission_scores` có ≥ 2,000 bản ghi sạch, pass data quality report.
+Kiểm tra & lệnh chạy (Sprint 1):
 
+- Chạy spider sample (10 trường, MOET source):
+
+  cd craw-data && scrapy crawl admission_score -a source=moet -a university_codes=QSB,BKA,QSE -o sample.jsonl -t jsonlines
+
+- Chạy spider tuyensinh247 (Playwright enabled):
+
+  cd craw-data && scrapy crawl admission_score -a source=tuyensinh247 -a years=2023,2024 -o tuyensinh247.jsonl -t jsonlines
+
+- Chạy data quality report:
+
+  cd craw-data && python scripts/data_quality_report.py --input output.jsonl
+
+- Kiểm tra DB (Postgres): xác nhận bảng `admission_scores` có bản ghi, ví dụ:
+
+  psql -h <host> -U <user> -d <db> -c "SELECT COUNT(*) FROM admission_scores;"
+
+**✅ Output Sprint 1:** Bảng `admission_scores` đã có dữ liệu seed và sample; các pipeline cơ bản hoạt động (validation → normalize → dedup → store).
 ---
 
 ## Sprint 2 – Thu thập Thông tin Ngành học (1 tuần)

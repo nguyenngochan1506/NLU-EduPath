@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Điểm chuẩn đại học 2024 – Bộ GD&amp;ĐT</title>
+</head>
+<body>
+
+<div class="container">
+  <h1>Danh sách điểm chuẩn tuyển sinh đại học năm 2024</h1>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Mã trường</th>
+        <th>Tên trường</th>
+        <th>Mã ngành</th>
+        <th>Tên ngành</th>
+        <th>Tổ hợp môn</th>
+        <th>Điểm chuẩn</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Row 1: Hợp lệ đầy đủ -->
+      <tr>
+        <td>QSB</td>
+        <td>Trường Đại học Bách khoa - ĐHQG TP.HCM</td>
+        <td>7480103</td>
+        <td>Kỹ thuật phần mềm</td>
+        <td>A00</td>
+        <td>25.50</td>
+      </tr>
+
+      <!-- Row 2: Hợp lệ, tổ hợp A01 -->
+      <tr>
+        <td>QSB</td>
+        <td>Trường Đại học Bách khoa - ĐHQG TP.HCM</td>
+        <td>7480103</td>
+        <td>Kỹ thuật phần mềm</td>
+        <td>A01</td>
+        <td>25.25</td>
+      </tr>
+
+      <!-- Row 3: Hợp lệ, ngành khác -->
+      <tr>
+        <td>QSB</td>
+        <td>Trường Đại học Bách khoa - ĐHQG TP.HCM</td>
+        <td>7480201</td>
+        <td>Công nghệ thông tin</td>
+        <td>A00</td>
+        <td>26.00</td>
+      </tr>
+
+      <!-- Row 4: Trường khác -->
+      <tr>
+        <td>BKA</td>
+        <td>Trường Đại học Bách khoa Hà Nội</td>
+        <td>7480103</td>
+        <td>Kỹ thuật phần mềm</td>
+        <td>A00</td>
+        <td>24.85</td>
+      </tr>
+
+      <!-- Row 5: Hợp lệ, tổ hợp D01 -->
+      <tr>
+        <td>QSE</td>
+        <td>Trường Đại học Kinh tế TP.HCM</td>
+        <td>7340101</td>
+        <td>Quản trị kinh doanh</td>
+        <td>D01</td>
+        <td>24.50</td>
+      </tr>
+
+      <!-- Row 6: Điểm chuẩn dùng dấu phẩy -->
+      <tr>
+        <td>QSE</td>
+        <td>Trường Đại học Kinh tế TP.HCM</td>
+        <td>7340101</td>
+        <td>Quản trị kinh doanh</td>
+        <td>A01</td>
+        <td>23,75</td>
+      </tr>
+
+      <!-- Row 7: Không có điểm chuẩn (placeholder) -->
+      <tr>
+        <td>FTU</td>
+        <td>Trường Đại học Ngoại thương</td>
+        <td>7340201</td>
+        <td>Kế toán</td>
+        <td>A00</td>
+        <td>---</td>
+      </tr>
+
+      <!-- Row 8: Điểm kèm chú thích text -->
+      <tr>
+        <td>QSI</td>
+        <td>Trường Đại học Công nghệ Thông tin - ĐHQG TP.HCM</td>
+        <td>7480201</td>
+        <td>Công nghệ thông tin</td>
+        <td>A00</td>
+        <td>26.50 điểm</td>
+      </tr>
+
+      <!-- Row 9: Tổ hợp môn tên đầy đủ (cần normalize) -->
+      <tr>
+        <td>KQD</td>
+        <td>Trường Đại học Kinh tế Quốc dân</td>
+        <td>7340101</td>
+        <td>Quản trị kinh doanh</td>
+        <td>Toán - Lý - Hóa</td>
+        <td>22.50</td>
+      </tr>
+
+      <!-- Row 10: Mã ngành không chuẩn -->
+      <tr>
+        <td>QST</td>
+        <td>Trường Đại học Sư phạm Kỹ thuật TP.HCM</td>
+        <td></td>
+        <td>Công nghệ kỹ thuật cơ khí</td>
+        <td>A00</td>
+        <td>21.00</td>
+      </tr>
+
+      <!-- Row 11: Hàng thiếu dữ liệu mã trường (nên bị skip) -->
+      <tr>
+        <td></td>
+        <td></td>
+        <td>7480201</td>
+        <td>Công nghệ thông tin</td>
+        <td>A00</td>
+        <td>20.00</td>
+      </tr>
+
+      <!-- Row 12: Điểm chuẩn ngoài khoảng hợp lệ (nên set None) -->
+      <tr>
+        <td>TDT</td>
+        <td>Trường Đại học Tôn Đức Thắng</td>
+        <td>7480201</td>
+        <td>Công nghệ thông tin</td>
+        <td>A00</td>
+        <td>99.9</td>
+      </tr>
+
+      <!-- Row 13: Hàng chỉ có 3 cột (nên bị skip) -->
+      <tr>
+        <td>BAD</td>
+        <td>Trường test</td>
+        <td></td>
+      </tr>
+
+      <!-- Row 14: Tổ hợp môn tiếng Anh không chuẩn (fallback KHAC) -->
+      <tr>
+        <td>QHI</td>
+        <td>Trường Đại học Công nghệ – ĐHQGHN</td>
+        <td>7480201</td>
+        <td>Công nghệ thông tin</td>
+        <td>xyz-unknown</td>
+        <td>25.00</td>
+      </tr>
+
+      <!-- Row 15: Điểm chuẩn hợp lệ, ký hiệu ≥ -->
+      <tr>
+        <td>BKA</td>
+        <td>Trường Đại học Bách khoa Hà Nội</td>
+        <td>7520201</td>
+        <td>Kỹ thuật điện tử viễn thông</td>
+        <td>A01</td>
+        <td>≥ 22.50</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Phân trang -->
+  <nav>
+    <ul class="pagination">
+      <li class="active"><a href="?NamTuyenSinh=2024&amp;Page=1">1</a></li>
+      <li><a href="?NamTuyenSinh=2024&amp;Page=2">2</a></li>
+      <li><a href="?NamTuyenSinh=2024&amp;Page=3">3</a></li>
+      <li><a href="?NamTuyenSinh=2024&amp;Page=2">›</a></li>
+      <li><a href="?NamTuyenSinh=2024&amp;Page=3">»</a></li>
+    </ul>
+  </nav>
+</div>
+
+</body>
+</html>

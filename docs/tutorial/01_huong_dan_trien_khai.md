@@ -5,7 +5,7 @@ Tài liệu này hướng dẫn các bước thiết lập hệ thống NLU-EduP
 ---
 
 ## 1. Yêu cầu hệ thống
-- **Python**: 3.11+
+- **Python**: 3.12+
 - **Docker & Docker Compose**: Để chạy PostgreSQL và Redis
 - **Playwright**: Cần thiết để cào dữ liệu từ các trang web hiện đại (SPA).
 
@@ -51,6 +51,28 @@ scrapy crawl admission_score -a source=tuyensinh247 -a years=2024 --loglevel=INF
 - `🆕 [NEW SCHOOL]`: Robot phát hiện và tự tạo một trường đại học mới trong DB.
 - `🎯 [NEW MAJOR]`: Robot phát hiện và tự tạo một ngành học mới chưa có trong từ điển.
 - `✅ [DONE]`: Robot đã thu thập xong dữ liệu của một trường.
+
+---
+
+## 5. Script Triển khai Nhanh (Khuyên dùng)
+
+Để đơn giản hóa, bạn có thể sử dụng script `init_and_crawl.sh` ngay tại thư mục gốc của dự án. Script này sẽ tự động:
+1. Kích hoạt môi trường ảo (`venv`).
+2. Nạp/Cập nhật danh mục ngành học chuẩn (`seed_data.py`).
+3. Khởi động Robot cào dữ liệu từ Tuyensinh247 cho tất cả các năm.
+
+```bash
+# Cấp quyền thực thi (chỉ cần làm 1 lần)
+chmod +x init_and_crawl.sh
+
+# Chạy toàn bộ tiến trình
+./init_and_crawl.sh
+```
+
+Nếu muốn giới hạn phạm vi cào (ví dụ chỉ cào trường Đại học Nông Lâm - NLS), bạn có thể thêm tham số:
+```bash
+./init_and_crawl.sh -a university_codes=NLS
+```
 
 ---
 

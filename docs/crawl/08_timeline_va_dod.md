@@ -20,14 +20,14 @@ Tuần 6    (Sprint 5):            Tự động hóa & Tích hợp
 
 | Sprint | Task | Dev 1 | Dev 2 | Deadline |
 |--------|------|-------|-------|----------|
-| Sprint 0 | Cài đặt môi trường, Docker | ✅ | ✅ | Ngày 3 |
-| Sprint 0 | Database schema + migration | | ✅ | Ngày 3 |
-| Sprint 0 | BaseSpider + ValidationPipeline | ✅ | | Ngày 5 |
-| Sprint 0 | Seed data (trường + ngành) | ✅ | ✅ | Ngày 5 |
-| Sprint 1 | AdmissionScoreSpider | ✅ | | Tuần 1 cuối |
-| Sprint 1 | DeduplicationPipeline | | ✅ | Tuần 1 cuối |
-| Sprint 1 | NormalizationPipeline | ✅ | | Tuần 2 đầu |
-| Sprint 1 | StoragePipeline + chạy thực tế | ✅ | ✅ | Tuần 2 cuối |
+| Sprint 0 | Cài đặt môi trường, Docker | ✅ | ✅ | ✅ Done |
+| Sprint 0 | Database schema + migration | | ✅ | ✅ Done |
+| Sprint 0 | BaseSpider + ValidationPipeline | ✅ | | ✅ Done |
+| Sprint 0 | Seed data (trường + ngành) | ✅ | ✅ | ✅ Done |
+| Sprint 1 | AdmissionScoreSpider | ✅ | | ✅ Done |
+| Sprint 1 | DeduplicationPipeline | | ✅ | ✅ Done |
+| Sprint 1 | NormalizationPipeline | ✅ | | ✅ Done |
+| Sprint 1 | StoragePipeline + chạy thực tế | ✅ | ✅ | ✅ Done |
 | Sprint 2 | MajorInfoSpider | | ✅ | Tuần 3 giữa |
 | Sprint 2 | EnrichmentPipeline (Holland map) | ✅ | | Tuần 3 cuối |
 | Sprint 3 | UniversitySpider | | ✅ | Tuần 4 cuối |
@@ -38,12 +38,12 @@ Tuần 6    (Sprint 5):            Tự động hóa & Tích hợp
 
 ### 14.3 Mốc bàn giao (Milestones)
 
-| Milestone | Thời điểm | Điều kiện pass | Sản phẩm bàn giao |
-|-----------|-----------|----------------|-------------------|
-| **M1** – Data foundation | Cuối tuần 2 | ≥ 2,000 bản ghi điểm chuẩn sạch | DB có dữ liệu, data quality report |
-| **M2** – AI-ready data | Cuối tuần 3 | ≥ 500 ngành có Holland types | AI engine có thể bắt đầu train |
-| **M3** – Full dataset | Cuối tuần 5 | Đủ 4 loại dữ liệu, tỷ lệ hợp lệ ≥ 95% | Dataset hoàn chỉnh |
-| **M4** – Automation live | Cuối tuần 6 | Scheduler chạy ổn định 3 ngày liên tiếp | Hệ thống crawl tự động |
+| Milestone | Thời điểm | Điều kiện pass | Sản phẩm bàn giao | Trạng thái |
+|-----------|-----------|----------------|-------------------|------------|
+| **M1** – Data foundation | Cuối tuần 2 | ≥ 2,000 bản ghi điểm chuẩn sạch | DB có dữ liệu, data quality report | ✅ Pass (4,713 records) |
+| **M2** – AI-ready data | Cuối tuần 3 | ≥ 500 ngành có Holland types | AI engine có thể bắt đầu train | 🟡 In Progress |
+| **M3** – Full dataset | Cuối tuần 5 | Đủ 4 loại dữ liệu, tỷ lệ hợp lệ ≥ 95% | Dataset hoàn chỉnh | ⏳ Pending |
+| **M4** – Automation live | Cuối tuần 6 | Scheduler chạy ổn định 3 ngày liên tiếp | Hệ thống crawl tự động | ⏳ Pending |
 
 ---
 

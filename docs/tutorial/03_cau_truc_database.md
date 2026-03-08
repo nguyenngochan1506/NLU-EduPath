@@ -17,12 +17,17 @@ Lưu trữ thông tin định danh và hồ sơ của các cơ sở giáo dục 
 | `region` | String(50) | Khu vực: `north`, `central`, `south` |
 | `province` | String(100) | Tỉnh/Thành phố trụ sở |
 | `address` | Text | Địa chỉ chi tiết |
-| `website` | String(255) | Website chính thức của trường |
-| `admission_url` | String(255) | Trang tin tuyển sinh của trường |
+| `website` | String(500) | Website chính thức của trường |
+| `admission_url` | String(500) | Trang tin tuyển sinh của trường |
+| `logo_url` | String(500) | Link ảnh logo của trường |
 | `tuition_min` | BigInt | Học phí tối thiểu ước tính (VNĐ/năm) |
 | `tuition_max` | BigInt | Học phí tối đa ước tính (VNĐ/năm) |
+| `established_year`| SmallInt | Năm thành lập |
 | `is_active` | Boolean | Trạng thái hoạt động (Default: True) |
 | `scraped_at` | DateTime | Thời điểm thu thập dữ liệu gần nhất |
+| `source_url` | String(500) | URL nguồn thu thập |
+| `created_at` | DateTime | Thời điểm tạo bản ghi |
+| `updated_at` | DateTime | Thời điểm cập nhật bản ghi |
 
 ---
 
@@ -63,7 +68,9 @@ Lưu trữ dữ liệu lịch sử điểm chuẩn qua các năm.
 | `cutoff_score` | Numeric(5,2) | **Điểm chuẩn** (Thang 30 hoặc 100) |
 | `quota` | BigInt | Chỉ tiêu tuyển sinh của ngành đó |
 | `note` | Text | Ghi chú thêm (VD: Tiêu chí phụ) |
+| `scraped_at` | DateTime | Thời điểm thu thập dữ liệu |
 | `source_url` | String(500) | Link nguồn trang web lấy dữ liệu |
+| `created_at` | DateTime | Thời điểm tạo bản ghi |
 
 ---
 

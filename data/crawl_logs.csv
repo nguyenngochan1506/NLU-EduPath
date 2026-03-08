@@ -1,0 +1,4 @@
+id,spider_name,status,started_at,finished_at,records_new,records_updated,records_failed,error_summary,triggered_by
+9c1c6d8c-1040-4986-a874-24f5637fbf01,admission_score,success,2026-03-06 19:57:08.115839+07,2026-03-06 19:57:13.376025+07,0,0,0,,
+90d9040b-681b-4fa5-a6d0-185b6c56c5f8,admission_score,success,2026-03-06 20:01:42.927647+07,2026-03-06 20:01:48.19019+07,0,0,0,,
+9ed1afc3-8843-4ce8-8b1c-b79e4bb6cc3b,admission_score,partial,2026-03-06 20:06:43.026482+07,2026-03-06 20:25:00.211621+07,513,0,35,,
